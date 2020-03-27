@@ -28,9 +28,6 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# Load env variables from .env file
-gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
-
 # AWS
 gem 'aws-sdk-core', '~> 3.86'
 gem 'aws-sigv4', '~> 1.1.0', '>= 1.0.0'
@@ -72,10 +69,13 @@ gem 'sidekiq', '~> 6.0.3', '= 6.0.3'
 gem 'uuid', '~> 2.3', '>= 2.3.8'
 
 group :development, :test do
-# Call 'byebug' anywhere in the code to stop execution and get a debugger console
-gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-gem 'letter_opener'
-gem 'letter_opener_web'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'letter_opener'
+  gem 'letter_opener_web'
+  
+  # Load env variables from .env file
+  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 end
 
 group :development do
