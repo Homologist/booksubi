@@ -12,7 +12,7 @@ default: &default
   host: <%= ENV.fetch("RAILS_HOST_POSTGRES") { "postgres" } %>
   port: 5432
   <% else %>
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV.fetch("DATABASE_URL") || "dsfdfsf" %>
   <% end %>
 
 development:
