@@ -63,6 +63,6 @@ EXPOSE 3000
 EXPOSE 4000
 EXPOSE 35729
 EXPOSE 5000
-RUN ls /app
+
 # Start the main process.
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
