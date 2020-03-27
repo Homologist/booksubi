@@ -1,3 +1,3 @@
 Raven.configure do |config|
-  config.dsn = ENV.fetch("SENTRY_DSN")
+  config.dsn = ENV["SENTRY_DSN"]
 end
