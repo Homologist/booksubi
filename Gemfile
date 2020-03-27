@@ -48,6 +48,7 @@ gem 'ruby-prof', '~> 1.0'
 
 # Monitoring
 #gem 'prometheus-client', '~> 1.0.0'
+gem 'airbrake', '~> 10.0', '>= 10.0.1'
 gem 'flamegraph', '~> 0.9.5'
 gem 'memory_profiler', '~> 0.9.14'
 gem 'rack-mini-profiler', '~> 1.1.4', require: false
