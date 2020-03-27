@@ -5,15 +5,15 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  #  <% if ENV["RAILS_HOST_POSTGRES"] %>
+  <% if ENV["RAILS_HOST_POSTGRES"] %>
   url: <%= ENV.fetch("DATABASE_URL") %>
-  #  <% else %>
-  # host: <%= ENV.fetch("RAILS_HOST_POSTGRES") { "postgres" } %>
-  #port: 5432
-  #<% end %>
+  <% else %>
+  host: <%= ENV.fetch("RAILS_HOST_POSTGRES") { "postgres" } %>
+  port: 5432
+  <% end %>
 
 development:
   <<: *default
