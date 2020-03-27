@@ -10,8 +10,8 @@ default: &default
   timeout: 5000
   port: 5432
   host: <%= ENV.fetch("RAILS_HOST_POSTGRES") { "postgres" } %>
-  <% if ENV["HEROKU_POSTGRESQL_MAUVE_URL"] %>
-  url: <%= ENV.fetch("HEROKU_POSTGRESQL_MAUVE_URL") %>
+  <% if ENV["DATABASE_URL"] %>
+  url: <%= ENV.fetch("DATABASE_URL") %>
   <% end %>
 
 development:
