@@ -48,6 +48,7 @@ gem 'ruby-prof', '~> 1.0'
 
 # Monitoring
 #gem 'prometheus-client', '~> 1.0.0'
+gem 'airbrake', '~> 10.0', '>= 10.0.1'
 gem 'flamegraph', '~> 0.9.5'
 gem 'memory_profiler', '~> 0.9.14'
 gem 'rack-mini-profiler', '~> 1.1.4', require: false
@@ -90,8 +91,11 @@ end
 group :test do
 # Adds support for Capybara system testing and selenium driver
 gem 'capybara', '>= 2.15'
+gem 'rspec', '~> 3.9'
+gem 'rspec-rails', '~> 4.0'
 gem 'cucumber', '~> 3.1', '>= 3.1.2'
 gem 'selenium-webdriver'
+gem 'database_cleaner'
 # Easy installation and use of web drivers to run system tests with browsers
 gem 'webdrivers'
 end

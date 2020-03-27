@@ -37,7 +37,7 @@ WORKDIR /app
 # Use bunlder to avoid exit with code 1 bugs while doing integration test
 RUN gem install bundler -v 2 --no-doc
 RUN echo bundle start with $(nproc) processes env: $RAILS_ENV
-RUN bundle install -j $(nproc) --deployment
+RUN bundle install -j $(nproc)
 
 # Set up node_modules files
 ADD package.json yarn.lock  /app/
