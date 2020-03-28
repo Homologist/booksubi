@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @csv_book.name %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @csv_book.id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @csv_book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @csv_book.author %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @csv_book.date %>
+</p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @csv_book.publisher %>
+</p>
+
+<%= link_to 'Edit', edit_csv_book_path(@csv_book) %> |
+<%= link_to 'Back', csv_books_path %>
