@@ -45,4 +45,9 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  # Allowed host
+  config.hosts << "http://localhost:3000/"
+  config.hosts << "http://https://books-ubi.herokuapp.com//"
+  config.hosts << "www.example.com"
 end

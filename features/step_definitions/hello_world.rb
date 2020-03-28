@@ -6,5 +6,5 @@ When("I go the home page") do
 end
 
 Then("I should see the login page") do
-  expect(page).to have_content("login")
+  expect(page).to have_content("Log in")
 end
