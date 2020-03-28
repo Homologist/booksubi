@@ -1,13 +1,16 @@
 {
   "environments": {
     "test": {
+      "env": {
+        "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL": true
+      },
       "addons":[
          "heroku-redis",
          "heroku-postgresql"
       ],
       "scripts": [{
         "test-setup": "gem install cucumber-rails",
-        "test": "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true cucumber"
+        "test": "cucumber"
       },
       {
         "test-setup": "gem install rspec",
