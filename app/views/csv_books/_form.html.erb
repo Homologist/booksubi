@@ -1,0 +1,31 @@
+<%= form_with(model: csv_book, local: true, multipart: true, html: {class: "w-75"}) do |form| %>
+  <% if csv_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(csv_book.errors.count, "error") %> prohibited this csv_book from being saved:</h2>
+
+      <ul>
+        <% csv_book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group mb-4">
+    <div class="custom-file">
+      <input type="file" name="csv_book[file]" id="csv_book_file" class="custom-file-input">
+      <label class="custom-file-label" for="csv_book_csv_book"></label>
+    </div>
+    <div class="input-group-append">
+      <input type="submit" name="commit" value="Upload Book" data-disable-with="Create Csv book" class="btn btn-secondary">
+    </div>
+  </div>
+<% end %>
+<script>
+  $('#csv_book_file').on('change',function(){
+      //get the file name
+      var fileName = $(this).val();
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(fileName);
+    })
+</script>

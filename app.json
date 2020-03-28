@@ -5,6 +5,10 @@
          "heroku-redis",
          "heroku-postgresql"
       ]
+    "scripts": {
+        "test-setup": "gem install cucumber-rails",
+        "test": "cucumber"
+      }
     }
   }
 }

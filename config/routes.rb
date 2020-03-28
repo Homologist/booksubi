@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :csv_books
   devise_for :users
   devise_scope :user do
     unauthenticated :user do

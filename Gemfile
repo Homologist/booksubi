@@ -29,10 +29,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # AWS
-gem 'aws-sdk-core', '~> 3.86'
-gem 'aws-sigv4', '~> 1.1.0', '>= 1.0.0'
-gem 'faraday_middleware', '~> 0.13.1'
-gem 'faraday_middleware-aws-sigv4', '~> 0.2.4'
+gem 'aws-sdk-s3'
 
 # Linter
 gem 'fasterer', '~> 0.8.0'
@@ -53,10 +50,8 @@ gem 'sentry-raven', '~> 2.13.0', '>= 2.9.0'
 gem 'stackprof', '~> 0.2.15'
 
 # Admin
-gem 'activeadmin', '~> 2.5'
 gem 'devise', '~> 4.7.1'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'pundit', '~> 2.1.0'
+gem 'inherited_resources', '~> 1.11'
 
 # Performance tools
 gem 'async', '~> 1.23'
@@ -65,8 +60,11 @@ gem 'concurrent-ruby', '~> 1.1', '>= 1.1.5'
 # background
 gem 'sidekiq', '~> 6.0.3', '= 6.0.3'
 
-#gem 'tunemygc', '~> 1.0', '>= 1.0.4'
+# gem 'tunemygc', '~> 1.0', '>= 1.0.4'
 gem 'uuid', '~> 2.3', '>= 2.3.8'
+
+# front end
+gem 'formtastic', '~> 3.1', '>= 3.1.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -89,15 +87,15 @@ gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
-# Adds support for Capybara system testing and selenium driver
-gem 'capybara', '>= 2.15'
-gem 'rspec', '~> 3.9'
-gem 'rspec-rails', '~> 4.0'
-gem 'cucumber-rails', '~> 2.0.0', '>= 1.4.3'
-gem 'selenium-webdriver'
-gem 'database_cleaner'
-# Easy installation and use of web drivers to run system tests with browsers
-gem 'webdrivers'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15'
+  gem 'rspec', '~> 3.9'
+  gem 'rspec-rails', '~> 4.0'
+  gem 'cucumber-rails', '~> 2.0.0', '>= 1.4.3'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
