@@ -22,6 +22,8 @@ RSpec.describe CsvBook, type: :model do
     csv1.file = test_file
     csv2.file = test_file
     csv1.custom_save
-    expect(csv2.save).to eq(false)
+    expect(csv2.custom_save).to eq(false)
+    expect(CsvBook.count).to eq(1)
+
   end
 end

@@ -7,7 +7,7 @@
       ],
       "scripts": [{
         "test-setup": "gem install cucumber-rails",
-        "test": "cucumber"
+        "test": "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true cucumber"
       },
       {
         "test-setup": "gem install rspec",
