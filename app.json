@@ -4,8 +4,8 @@
       "addons":[
          "heroku-redis",
          "heroku-postgresql"
-      ]
-    "scripts": {
+      ],
+      "scripts": {
         "test-setup": "gem install cucumber-rails",
         "test": "cucumber"
       }
