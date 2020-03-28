@@ -93,7 +93,7 @@ group :test do
 gem 'capybara', '>= 2.15'
 gem 'rspec', '~> 3.9'
 gem 'rspec-rails', '~> 4.0'
-gem 'cucumber', '~> 3.1', '>= 3.1.2'
+gem 'cucumber-rails', '~> 2.0.0', '>= 1.4.3'
 gem 'selenium-webdriver'
 gem 'database_cleaner'
 # Easy installation and use of web drivers to run system tests with browsers
