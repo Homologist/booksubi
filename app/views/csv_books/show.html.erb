@@ -1,34 +1,71 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @csv_book.name %>
-</p>
-
-<p>
-  <strong>Id:</strong>
-  <%= @csv_book.id %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @csv_book.title %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @csv_book.author %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @csv_book.date %>
-</p>
-
-<p>
-  <strong>Publisher:</strong>
-  <%= @csv_book.publisher %>
-</p>
-
-<%= link_to 'Edit', edit_csv_book_path(@csv_book) %> |
-<%= link_to 'Back', csv_books_path %>
+<div class="container test-center">
+  <p id="notice"><%= notice %></p>
+  
+  <h1>Created book</h1>
+  <table id="created_book" class="table table-hover w-75">
+    <thead>
+      <tr class="table-danger">
+        <th  scope="col" colspan="3"><%= @new_books.first.csv_book.name %></th>
+        <th  scope="col" colspan="3"><%= @new_books.first.csv_book.uuid %></th>
+      </tr>
+      <tr class="table-info">
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Date</th>
+        <th scope="col">Publisher</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @new_books.each.with_index do |row, i| %>
+        <tr class="<%= i % 3 == 0? "table-success": i % 3 == 1 ? "table-primary": "table-secondary"  %>">
+          <td><%= row.uuid %></td>
+          <td><%= row.title %></td>
+          <td><%= row.author %></td>
+          <td><%= row.date %></td>
+          <td><%= row.publisher %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+ 
+  <br>
+  <br>
+  <br>
+  
+  <% if current_user %>
+    <h1>All Books</h1>
+    
+    <table id="all_books" class="table w-75">
+      <thead>
+        <tr class="table-danger">
+          <th  scope="col" colspan="3"><%= @all_my_books.first.csv_book.name %></th>
+          <th  scope="col" colspan="3"><%= @all_my_books.first.csv_book.uuid %></th>
+        </tr>
+        <tr class="table-info">
+          <th scope="col">Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Date</th>
+          <th scope="col">Publisher</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @all_my_books.each.with_index do |book, i| %>
+          <tr class="<%= i % 3 == 0? "table-success": i % 3 == 1 ? "table-primary": "table-secondary"  %>">
+            <td><%= book.uuid %></td>
+            <td><%= book.title %></td>
+            <td><%= book.author %></td>
+            <td><%= book.date %></td>
+            <td><%= book.publisher %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  
+  <br>
+  <%= link_to 'New Csv Book', new_csv_book_path %>
+</div>

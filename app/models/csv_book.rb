@@ -1,19 +1,24 @@
 require 'csv'
 class CsvBook < ApplicationRecord
-  validates :name, :uniqueness => true
-  attr_accessor :file
+  validates :uuid, :uniqueness => true
+  attr_accessor :path
+  has_many :books
+  belongs_to :user
 
-  def custom_save
-    CSV.foreach(file, headers: true) do |row|
+  def custom_build
+    list_of_books = []
+    CSV.foreach(path, headers: true) do |row|
       hash = row.to_hash
-      self.title = hash["title"]
-      self.author = hash["author"]
-      self.date = hash["date"]
-      self.uuid =  hash["uuid"]
-      self.publisher = hash["publisher"]
+      book = Book.new
+      book.title = hash["title"]
+      book.author = hash["author"]
+      book.date = hash["date"]
+      book.uuid =  hash["uuid"]
+      book.publisher = hash["publisher"]
+      list_of_books << book
     end
-    self.name = File.basename(file) 
-    self.uuid = self.uuid + UUID.new.generate
-    save
+    self.uuid = UUID.new.generate
+    self.books = list_of_books
+    self
   end
 end

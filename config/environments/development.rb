@@ -64,7 +64,7 @@ Rails.application.configure do
   config.hosts << "www.example.com"
   config.hosts << "books-ubi.herokuapp.com"
 
-  logger           = ActiveSupport::Logger.new(STDOUT)
-  logger.formatter = config.log_formatter
-  config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  #logger           = ActiveSupport::Logger.new(STDOUT)
+  #logger.formatter = config.log_formatter
+  #config.logger    = ActiveSupport::TaggedLogging.new(logger)
 end
