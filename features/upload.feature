@@ -15,6 +15,7 @@ Feature: Upload
         When I upload a valid csv
         Then I have a valid csv in my account
         Then I have a csv sent to S3
+        Then I have a the url of the file sent to the bonnus destination
         Then I view all my csv
         Then I see the uuid for the file created
 

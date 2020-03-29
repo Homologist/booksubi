@@ -1,4 +1,4 @@
-class CsvBooksController < InheritedResources::Base
+class CsvBooksController < ApplicationController
   def index
     @all_my_books = Book.joins(:csv_book).where(csv_books: {user_id: current_user.id})
   end
@@ -17,6 +17,8 @@ class CsvBooksController < InheritedResources::Base
          s3 = Aws::S3::Resource.new(region: 'eu-west-2')
          obj = s3.bucket('books-ubi').object(@csv_book.uuid)
          obj.upload_file(@csv_book.path)
+         Net::HTTP.post_form(URI.parse('https://requestb.in/14rl2ir1'),
+                             { 's3_url' => obj.public_url})
          format.html { redirect_to @csv_book, notice: 'CSV was successfully created.' }
          format.json { render :show, status: :created, location: @csv_book }
       else
@@ -24,6 +26,10 @@ class CsvBooksController < InheritedResources::Base
          format.json { render json: @csv_book.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def new
+    @csv_book = CsvBook.new
   end
 
   private

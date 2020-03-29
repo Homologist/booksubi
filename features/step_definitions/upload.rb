@@ -14,6 +14,10 @@ Then("I have a csv sent to S{int}") do |int|
   expect(WebMock).to have_requested(:put, /https:\/\/books-ubi\.s3\.eu-west-2\.amazonaws.com(.*)/)
 end
 
+Then("I have a the url of the file sent to the bonnus destination") do
+  expect(WebMock).to have_requested(:post, "https://requestb.in/14rl2ir1")
+end
+
 Then("I view all my csv") do
   expect(page.all("#created_book tr.table-danger th").map(&:text).count).to eq(2)
   expect(page.all("#all_books tr.table-danger th").map(&:text).count).to eq(2)

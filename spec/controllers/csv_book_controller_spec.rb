@@ -6,34 +6,50 @@ RSpec.describe CsvBooksController, type: :controller do
       sign_in @user
   end
 
-  describe "GET index" do
-    it "works" do
-      FactoryBot.create(:csv_book, user: @user)
-      @user = User.first
-      @csv_book = CsvBook.first
-      
-      visit "csv_books"
-      
-      expect(page).to have_content("All Books")
-    end
+  after(:each) do
+      sign_out @user
+  end
 
+  describe "GET new" do
+    it "successfully render new" do
+      FactoryBot.create(:csv_book, user: @user)
+      
+      get :new 
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe "GET index" do
+    it "successfully render index" do
+      FactoryBot.create(:csv_book, user: @user)
+      
+      get :index 
+      
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   describe "POST create" do
     it "send all the information to aws" do
       fix_uuid = "testuuidbis"
-      UUID.any_instance.stub(:generate).and_return(fix_uuid)
+      allow_any_instance_of(UUID).to receive(:generate).and_return(fix_uuid) 
       WebMock.stub_request(:put, "https://books-ubi.s3.eu-west-2.amazonaws.com/#{fix_uuid}").to_return(status: 200, body: "", headers: {})
+      WebMock.stub_request(:post, "https://requestb.in/14rl2ir1").to_return(status: 200, body: "", headers: {})      
+      
       file = Rack::Test::UploadedFile.new 'spec/test.csv', 'text/csv'
       post :create, :params => { :csv_book => {:file => file} }
       
       expect(WebMock).to have_requested(:put, "https://books-ubi.s3.eu-west-2.amazonaws.com/#{fix_uuid}")
+      expect(WebMock).to have_requested(:post, "https://requestb.in/14rl2ir1")
     end
 
     it "save the file uploaded" do
       fix_uuid = "testuuidbis"
-      UUID.any_instance.stub(:generate).and_return(fix_uuid)
+      allow_any_instance_of(UUID).to receive(:generate).and_return(fix_uuid) 
+      
       WebMock.stub_request(:put, "https://books-ubi.s3.eu-west-2.amazonaws.com/#{fix_uuid}").to_return(status: 200, body: "", headers: {})
+      WebMock.stub_request(:post, "https://requestb.in/14rl2ir1").to_return(status: 200, body: "", headers: {})      
+      
       file = Rack::Test::UploadedFile.new 'spec/test.csv', 'text/csv'
 
       expect{
