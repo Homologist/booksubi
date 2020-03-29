@@ -89,13 +89,15 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem 'cucumber-rails', '~> 2.0.0', '>= 1.4.3', require: false
+  gem 'database_cleaner'
+  gem 'factory_bot', '~> 5.1.2', '>= 5.1.2'
   gem 'rspec', '~> 3.9'
   gem 'rspec-rails', '~> 4.0'
-  gem 'cucumber-rails', '~> 2.0.0', '>= 1.4.3'
   gem 'selenium-webdriver'
-  gem 'database_cleaner'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'webmock', '~> 3.8.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
