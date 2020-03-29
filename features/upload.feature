@@ -16,7 +16,7 @@ Feature: Upload
         Then I have a valid csv in my account
         Then I have a csv sent to S3
         Then I view all my csv
-        Then I the uuid is for the file created
+        Then I see the uuid for the file created
 
     Scenario: I upload a csv but there is a book with the same uuid
         Given a valid user
@@ -30,7 +30,7 @@ Feature: Upload
 
     Scenario: I upload a csv but there is a csv with the same uuid
         Given a valid user
-        Given a csv already uploaded with the fix uuid
+        Given a csv already uploaded with the fix uuid "testfixuuid"
         When I go the home page
         When I log in
         Then I should see the upload page

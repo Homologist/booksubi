@@ -15,7 +15,7 @@ class CsvBooksController < InheritedResources::Base
     respond_to do |format|
       if @csv_book.custom_build.save
          s3 = Aws::S3::Resource.new(region: 'eu-west-2')
-         obj = s3.bucket('books-ubi').object('key')
+         obj = s3.bucket('books-ubi').object(@csv_book.uuid)
          obj.upload_file(@csv_book.path)
          format.html { redirect_to @csv_book, notice: 'CSV was successfully created.' }
          format.json { render :show, status: :created, location: @csv_book }
