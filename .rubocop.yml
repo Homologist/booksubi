@@ -18,6 +18,7 @@ AllCops:
      - 'tmp/**/*'
      - 'vendor/bundle/**/*'
      - 'Dockerfile*'
+     - 'Gemfile*'
      - 'app/helpers/csv_books_helper.rb'
      - 'app/jobs/application_job.rb'
      - 'app/mailers/application_mailer.rb'
