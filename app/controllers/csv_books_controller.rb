@@ -31,12 +31,10 @@ class CsvBooksController < ApplicationController
   private
 
   def send_url_to_service
-    begin
-      Net::HTTP.post_form(URI.parse('https://requestb.in/14rl2ir1'),
+    Net::HTTP.post_form(URI.parse('https://requestb.in/14rl2ir1'),
                         { 's3_url' => @obj.public_url })
-    rescue SocketError => e
-      Rails.logger.error(e)
-    end
+  rescue SocketError => e
+    Rails.logger.error(e)
   end
 
   def send_file_to_aws
