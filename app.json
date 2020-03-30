@@ -8,7 +8,7 @@
         "RAILS_ENV": "test",
         "RACK_ENV": "test",
         "S3_BUCKET": "books-ubi",
-        "SENTRY_DSN": ""
+        "SENTRY_DSN": "fake"
       },
       "addons":[
          "heroku-redis",
