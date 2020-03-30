@@ -18,12 +18,12 @@
         "test": "cucumber"
       },
       {
-        "test-setup": "gem install rubocop",
-        "test": "rubocop"
-      },
-      {
         "test-setup": "gem install rspec",
         "test": "rspec"
+      },
+      {
+        "test-setup": "gem install rubocop",
+        "test": "rubocop"
       }]
     },
     "review":{
