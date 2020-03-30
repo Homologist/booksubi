@@ -7,10 +7,8 @@ class CsvBooksController < ApplicationController
   def create
     @csv_book      = current_user.csv_books.build
     @csv_book.name = csv_book_params[:file].original_filename
-    @csv_book.file = csv_book_params[:file]
-    @csv_book.path = csv_book_params[:file].path
     respond_to do |format|
-      if @csv_book.custom_build.save
+      if @csv_book.custom_build(csv_book_params[:file]).save
         send_url_to_service
         format.html { redirect_to @csv_book, notice: 'CSV was successfully created.' }
         format.json { render :show, status: :created, location: @csv_book }

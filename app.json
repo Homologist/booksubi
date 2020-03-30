@@ -1,15 +1,16 @@
 {
-  "S3_BUCKET": "books-ubi",
-  "AWS_SECRET_ACCESS_KEY": "er7By0oo5SgXF4gAvAlyJ/gkImg4ua1hghJAO+68",
-  "AWS_ACCESS_KEY_ID": "AKIARFDUSM66YKPLKNQ2",
+  "env": {
+      "S3_BUCKET": {
+          "required": "false",
+          "value": ""
+      }
+  },
   "scripts": {
     "postdeploy": "bundle exec rails assets:precompile && bundle exec rails webpacker:compile && bundle exec rake db:migrate"
   },
   "environments": {
     "test": {
       "env": {
-        "AWS_SECRET_ACCESS_KEY": "er7By0oo5SgXF4gAvAlyJ/gkImg4ua1hghJAO+68",
-        "AWS_ACCESS_KEY_ID": "AKIARFDUSM66YKPLKNQ2",
         "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL": true,
         "RAILS_ENV": "test",
         "RACK_ENV": "test",
