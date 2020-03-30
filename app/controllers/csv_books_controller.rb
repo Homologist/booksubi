@@ -9,7 +9,7 @@ class CsvBooksController < ApplicationController
   end
 
   def create
-    send_file_to_aws
+    set_csv_book
 
     respond_to do |format|
       if @csv_book.custom_build.save
@@ -31,10 +31,12 @@ class CsvBooksController < ApplicationController
   private
 
   def send_url_to_service
-    Net::HTTP.post_form(URI.parse('https://requestb.in/14rl2ir1'),
-                        { 's3_url' => obj.public_url })
-  rescue SocketError => e
-    Rails.logger.error(e)
+    begin
+      Net::HTTP.post_form(URI.parse('https://requestb.in/14rl2ir1'),
+                        { 's3_url' => @obj.public_url })
+    rescue SocketError => e
+      Rails.logger.error(e)
+    end
   end
 
   def send_file_to_aws
