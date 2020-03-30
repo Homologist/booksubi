@@ -11,7 +11,7 @@ Then("I have a valid csv in my account") do
 end
 
 Then("I have a csv sent to S{int}") do |int|
-  expect(WebMock).to have_requested(:put, /https:\/\/books-ubi\.s3\.eu-west-2\.amazonaws.com(.*)/)
+  expect(@user.csv_books.first.file.path).to eq("uploads/test.csv")
 end
 
 Then("I have a the url of the file sent to the bonnus destination") do
