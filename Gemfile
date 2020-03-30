@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # AWS
 gem 'aws-sdk-s3'
+gem 'carrierwave-aws', '~> 1.4'
 
 # Linter
 gem 'fasterer', '~> 0.8.0'

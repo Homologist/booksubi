@@ -1,0 +1,62 @@
+version: '3.7'
+
+volumes:
+  node_modules:
+  bundle:
+
+x-core: &core
+  env_file:
+    - BookExporter/.env
+  build:
+    context: BookExporter
+    dockerfile: Dockerfile
+    args:
+      BUILDER_IMAGE_WEB: vagrant_app-build
+      RAILS_ENV: development
+  volumes:
+    - ./BookExporter:/app
+    - /app/vendor/bundle
+    - /app/node_modules
+  depends_on:
+    - app-build
+    - postgres
+    - redis
+
+services:
+  postgres:
+    image: postgres:12.0
+    ports:
+      - "5432:5432"
+    volumes:
+      - type: bind
+        source: ./tmp/db
+        target: /var/lib/postgresql:Z
+
+  redis:
+    image: redis:5.0.7-alpine
+    ports:
+      - "6379:6379"
+  app-build:
+    build:
+      context: BookExporter
+      dockerfile: Dockerfile.builder
+      args:
+        RAILS_ENV: development
+
+  web:
+    <<: *core
+    command: bash -c "cd /app && rm -f tmp/pids/server.pid && (bundle exec rake db:migrate 2>/dev/null || bundle exec rake db:migrate:reset) && bundle exec puma -C config/puma.rb"
+    environment:
+      PORT: 3000
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+
+  sidekiq:
+    <<: *core
+    command: bash -c "cd /app && bundle exec sidekiq -C config/sidekiq.yml"
+    ports:
+      - 6000:6000
+    environment:
+      PORT: 6000

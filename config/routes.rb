@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     authenticated :user do
       root 'csv_books#new', as: :main
-      resources :csv_books, only: [:new, :create, :index, :show]
+      resources :csv_books, only: [:new, :create, :show]
     end
   end
 end
