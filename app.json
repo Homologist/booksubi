@@ -17,8 +17,6 @@
       "scripts": {
         "test-setup": "gem install cucumber-rails && gem install rspec && gem install rubocop",
         "test": "rubocop . && rspec && cucumber"
-      },
-      "scripts": {
         "postdeploy": "bundle exec rails webpacker:compile"
       }
     },
