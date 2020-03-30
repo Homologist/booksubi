@@ -45,6 +45,7 @@ gem 'ruby-prof', '~> 1.0'
 gem 'flamegraph', '~> 0.9.5'
 gem 'memory_profiler', '~> 0.9.14'
 gem 'rack-mini-profiler', '~> 1.1.4', require: false
+gem 'sentry-raven', '~> 2.13.0', '>= 2.9.0'
 gem 'stackprof', '~> 0.2.15'
 
 # Admin
