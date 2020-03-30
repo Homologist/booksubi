@@ -38,31 +38,33 @@
     <h1>All Books</h1>
     
     <table id="all_books" class="table w-75">
-      <thead>
-        <tr class="table-danger">
-          <th  scope="col" colspan="3"><%= @all_my_books.first.csv_book.name %></th>
-          <th  scope="col" colspan="3"><%= @all_my_books.first.csv_book.uuid %></th>
-        </tr>
-        <tr class="table-info">
-          <th scope="col">Id</th>
-          <th scope="col">Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Date</th>
-          <th scope="col">Publisher</th>
-        </tr>
-      </thead>
+      <% @all_my_csv.each.with_index do |csv, i| %>
+          <thead>
+            <tr class="table-danger">
+              <th scope="col" colspan="3"><%= csv.name %></th>
+              <th scope="col" colspan="3"><%= csv.uuid %></th>
+            </tr>
+            <tr class="table-info">
+              <th scope="col">Id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Date</th>
+              <th scope="col">Publisher</th>
+            </tr>
+          </thead>
+        <% csv.books.each.with_index do |book, i| %>
     
-      <tbody>
-        <% @all_my_books.each.with_index do |book, i| %>
-          <tr class="<%= i % 3 == 0? "table-success": i % 3 == 1 ? "table-primary": "table-secondary"  %>">
-            <td><%= book.uuid %></td>
-            <td><%= book.title %></td>
-            <td><%= book.author %></td>
-            <td><%= book.date %></td>
-            <td><%= book.publisher %></td>
-          </tr>
+          <tbody>
+              <tr class="<%= i % 3 == 0? "table-success": i % 3 == 1 ? "table-primary": "table-secondary"  %>">
+                <td><%= book.uuid %></td>
+                <td><%= book.title %></td>
+                <td><%= book.author %></td>
+                <td><%= book.date %></td>
+                <td><%= book.publisher %></td>
+              </tr>
+          </tbody>
         <% end %>
-      </tbody>
+      <% end %>
     </table>
   <% end %>
   

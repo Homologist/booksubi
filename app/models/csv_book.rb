@@ -1,5 +1,9 @@
 require 'csv'
 
+class CsvUploader < CarrierWave::Uploader::Base
+  storage :aws
+end
+
 # This class represent the main business object the csv file containing books
 
 class CsvBook < ApplicationRecord
@@ -7,6 +11,7 @@ class CsvBook < ApplicationRecord
   attr_accessor :path
   has_many :books
   belongs_to :user
+  mount_uploader :file, CsvUploader
 
   def custom_build
     list_of_books = []
