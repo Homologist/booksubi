@@ -1,3 +1,5 @@
+# This class representing a user and deal with the credentials
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

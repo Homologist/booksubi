@@ -89,7 +89,16 @@ RSpec.configure do |config|
 
   # Factory bot
   config.include FactoryBot::Syntax::Methods
-
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
+  # remove warning
+  config.expect_with :rspec do |expectations|
+    expectations.syntax = [:expect, :should]
+  end
+
+  # Capybara
+  config.include Capybara::DSL
+  config.include Warden::Test::Helpers
 end

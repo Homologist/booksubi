@@ -1,4 +1,7 @@
 require 'csv'
+
+# This class represent the main business object the csv file containing books
+
 class CsvBook < ApplicationRecord
   validates :uuid, :uniqueness => true
   attr_accessor :path
