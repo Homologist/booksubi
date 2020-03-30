@@ -14,16 +14,20 @@ class CsvBooksController < ApplicationController
     @csv_book.name = csv_book_params[:file].original_filename
     respond_to do |format|
       if @csv_book.custom_build.save
-         s3 = Aws::S3::Resource.new(region: 'eu-west-2')
-         obj = s3.bucket('books-ubi').object(@csv_book.uuid)
-         obj.upload_file(@csv_book.path)
-         Net::HTTP.post_form(URI.parse('https://requestb.in/14rl2ir1'),
+        s3 = Aws::S3::Resource.new(region: 'eu-west-2')
+        obj = s3.bucket('books-ubi').object(@csv_book.uuid)
+        obj.upload_file(@csv_book.path)
+        begin
+          Net::HTTP.post_form(URI.parse('https://requestb.in/14rl2ir1'),
                              { 's3_url' => obj.public_url})
-         format.html { redirect_to @csv_book, notice: 'CSV was successfully created.' }
-         format.json { render :show, status: :created, location: @csv_book }
+        rescue SocketError => e
+          Rails.logger.error(e)
+        end
+        format.html { redirect_to @csv_book, notice: 'CSV was successfully created.' }
+        format.json { render :show, status: :created, location: @csv_book }
       else
-         format.html { render :new }
-         format.json { render json: @csv_book.errors, status: :unprocessable_entity }
+        format.html { render :new }
+        format.json { render json: @csv_book.errors, status: :unprocessable_entity }
       end
     end
   end
