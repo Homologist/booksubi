@@ -2,7 +2,12 @@
   "environments": {
     "test": {
       "env": {
-        "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL": true
+        "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL": true,
+        "S3_BUCKET": "books-ubi",
+        "AWS_SECRET_ACCESS_KEY": "er7By0oo5SgXF4gAvAlyJ/gkImg4ua1hghJAO+68",
+        "AWS_ACCESS_KEY_ID": "AKIARFDUSM66YKPLKNQ2",
+        "RAILS_ENV": "test",
+        "RACK_ENV": "test"
       },
       "addons":[
          "heroku-redis",
@@ -16,6 +21,15 @@
         "test-setup": "gem install rspec",
         "test": "rspec"
       }]
+    },
+    "review":{
+        "scripts": {
+            "postdeploy": "bundle exec rake db:schema:load db:seed"
+        },
+        "addons":[
+            "heroku-redis",
+            "heroku-postgresql"
+        ]
     }
   }
 }

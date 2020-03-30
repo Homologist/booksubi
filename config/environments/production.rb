@@ -112,4 +112,5 @@ Rails.application.configure do
 
   # Allowed host
   config.hosts << "http://https://books-ubi.herokuapp.com//"
+  config.hosts << /books-ubi.+.herokuapp.com/
 end
