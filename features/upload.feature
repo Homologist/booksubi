@@ -26,8 +26,7 @@ Feature: Upload
         When I log in
         Then I should see the upload page
         When I upload a valid csv
-        When I visit the index
-        Then I have no new valid csv in my account
+        Then I m still on the same page
 
     Scenario: I upload a csv but there is a csv with the same uuid
         Given a valid user
@@ -36,5 +35,17 @@ Feature: Upload
         When I log in
         Then I should see the upload page
         When I upload a valid csv
-        When I visit the index
-        Then I have no new valid csv in my account
+        Then I m still on the same page
+
+    Scenario: I upload two csv
+        Given a valid user
+        When I go the home page
+        When I log in
+        Then I should see the upload page
+        When I upload a valid csv
+        Then I have a valid csv in my account
+        Then I view all my csv
+        Then I see the uuid for the file created
+        When I go the home page
+        When I upload a valid second csv
+        Then I view both csv

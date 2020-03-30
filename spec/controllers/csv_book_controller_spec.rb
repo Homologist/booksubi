@@ -19,11 +19,11 @@ RSpec.describe CsvBooksController, type: :controller do
     end
   end
 
-  describe "GET index" do
-    it "successfully render index" do
-      FactoryBot.create(:csv_book, user: @user)
+  describe "GET show" do
+    it "successfully render show" do
+      csv = FactoryBot.create(:csv_book, user: @user)
       
-      get :index 
+      get :show, params: { id: csv.id }
       
       expect(response).to have_http_status(:ok)
     end

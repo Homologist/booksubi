@@ -1,10 +1,7 @@
 class CsvBooksController < ApplicationController
-  def index
-    @all_my_books = Book.joins(:csv_book).where(csv_books: { user_id: current_user.id })
-  end
 
   def show
-    @all_my_books = Book.joins(:csv_book).where(csv_books: { user_id: current_user.id })
+    @all_my_csv = current_user.csv_books
     @new_books = CsvBook.find(csv_book_id).books
   end
 
