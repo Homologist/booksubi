@@ -11,58 +11,65 @@ AllCops:
      - 'node_modules/*'
      - 'node_modules/*/*/*/*/*'
      - 'bin/*'
+     - 'lib/**/*'
      - 'log/**/*'
      - 'path/**/*'
      - 'public/**/*'
      - 'spec/**/*'
      - 'tmp/**/*'
-     - 'vendor/bundle/**/*'
      - 'Dockerfile*'
      - 'test/**/*'
+     - 'vendor/**/*'
      - 'Gemfile*'
      - 'app/helpers/csv_books_helper.rb'
      - 'app/jobs/application_job.rb'
      - 'app/mailers/application_mailer.rb'
      - !ruby/regexp /old_and_unused\.rb$/
- 
- Style/Encoding:
-   Enabled: false
- 
- Metrics/MethodLength:
-   Max: 30
- 
- Metrics/BlockLength:
-   Max: 50
- 
- Style/FrozenStringLiteralComment:
-   Enabled: false
- 
- Style/ClassAndModuleChildren:
-   Enabled: false
- 
- Style/StringLiterals:
-   Enabled: false
- 
- Style/StringLiteralsInInterpolation:
-   Enabled: false
- 
- Layout/LeadingCommentSpace:
-   Enabled: false
- 
- Layout/LineLength:
-   Max: 140
- 
- Style/Documentation:
-   Enabled: false
- 
- Style/GlobalVars:
-   Enabled: false
- 
- Style/HashEachMethods:
-     Enabled: true
- 
- Style/HashTransformKeys:
-     Enabled: true
- 
- Style/HashTransformValues:
-     Enabled: true
+
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/BlockLength:
+  Max: 50
+
+Metrics/AbcSize:
+  Max: 25
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Layout/LeadingCommentSpace:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 140
+
+Style/Documentation:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/HashEachMethods:
+    Enabled: true
+
+Style/HashTransformKeys:
+    Enabled: true
+
+Style/HashTransformValues:
+    Enabled: true

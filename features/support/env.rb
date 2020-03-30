@@ -1,6 +1,7 @@
 require 'cucumber/rails'
 require 'factory_bot'
 require 'cucumber/rspec/doubles'
+require 'capybara/cucumber'
 load 'spec/factories.rb'
 require "#{Rails.root}/features/support/stubs"
 
