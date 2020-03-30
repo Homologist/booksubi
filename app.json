@@ -1,4 +1,13 @@
 {
+  "env": {
+      "S3_BUCKET": {
+          "required": "false",
+          "value": ""
+      },
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rails assets:precompile && bundle exec rails webpacker:compile && bundle exec rake db:migrate"
+  },
   "environments": {
     "test": {
       "env": {

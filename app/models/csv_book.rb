@@ -24,7 +24,7 @@ class CsvBook < ApplicationRecord
       book.publisher = hash["publisher"]
       list_of_books << book
     end
-    self.append_uuid(file)
+    append_uuid(file)
     self.books = list_of_books
     self
   end
