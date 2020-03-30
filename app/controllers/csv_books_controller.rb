@@ -13,7 +13,7 @@ class CsvBooksController < ApplicationController
 
     respond_to do |format|
       if @csv_book.custom_build.save
-        set_csv_book
+        send_file_to_aws
         send_url_to_service
         format.html { redirect_to @csv_book, notice: 'CSV was successfully created.' }
         format.json { render :show, status: :created, location: @csv_book }
