@@ -11,7 +11,7 @@ Then("I have a valid csv in my account") do
 end
 
 Then("I have a csv sent to S{int}") do |int|
-  expect(@user.csv_books.first.file.path).to eq("uploads/test.csv")
+  expect(@user.csv_books.first.file.path).to match(/uploads\/test.*\.csv/)
 end
 
 Then("I have a the url of the file sent to the bonnus destination") do

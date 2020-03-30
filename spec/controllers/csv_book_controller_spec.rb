@@ -41,9 +41,6 @@ RSpec.describe CsvBooksController, type: :controller do
     end
 
     it "save the file uploaded" do
-      fix_uuid = "testuuidbis"
-      allow_any_instance_of(UUID).to receive(:generate).and_return(fix_uuid) 
-      
       WebMock.stub_request(:post, "https://requestb.in/14rl2ir1").to_return(status: 200, body: "", headers: {})      
       
       file = Rack::Test::UploadedFile.new 'spec/test.csv', 'text/csv'
