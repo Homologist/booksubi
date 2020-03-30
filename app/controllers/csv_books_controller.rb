@@ -1,5 +1,4 @@
 class CsvBooksController < ApplicationController
-
   def show
     @all_my_csv = current_user.csv_books
     @new_books = CsvBook.find(csv_book_id).books
